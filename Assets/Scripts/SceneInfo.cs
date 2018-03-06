@@ -9,6 +9,7 @@ public class SceneInfo : MonoBehaviour {
 	public string SceneName;
 	public bool use;
 	public Color ambientLight;
+	public bool headLight; // a light that moves with user's head, good for specular
 
 	// Use this for initialization
 	void Start () {

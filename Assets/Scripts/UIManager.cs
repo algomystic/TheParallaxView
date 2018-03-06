@@ -28,12 +28,15 @@ public class UIManager : MonoBehaviour {
 	public GameObject HelpPanel;
 
 	// ugly but I don't wanna figure out how to dynamically create UI buttons right now TODO
-	public Button Scene0;
-	public Button Scene1;
-	public Button Scene2;
+	public Button Scene0; // box scene
+	public Button Scene1; // void
+	public Button Scene2; // beeple
 	public Button Scene3;
 	public Button Scene4;
 
+	int activeScene;
+	public GameObject theVoidBrightnessSlider;
+	public GameObject theVoidBrightnessLabel; 
 
 	public void ToggleSettingsVisible () {
 		
@@ -53,22 +56,27 @@ public class UIManager : MonoBehaviour {
 	// ugly but I don't wanna figure out how to dynamically create UI buttons right now TODO
 	public void SetScene0 () {
 		sceneManager.SetActiveScene (0);
+		activeScene = 0;
 	}
 
 	public void SetScene1 () {
 		sceneManager.SetActiveScene (1);
+		activeScene = 1;
 	}
 
 	public void SetScene2 () {
 		sceneManager.SetActiveScene (2);
+		activeScene = 2;
 	}
 
 	public void SetScene3 () {
 		sceneManager.SetActiveScene (3);
+		activeScene = 3;
 	}
 
 	public void SetScene4 () {
 		sceneManager.SetActiveScene (4);
+		activeScene = 4;
 	}
 
 	/*
@@ -103,6 +111,14 @@ public class UIManager : MonoBehaviour {
 		HelpPanel.SetActive (false);
 	}
 
+	public void DisableSleep( bool disable_sleep ) {
+		if (disable_sleep) {
+			Screen.sleepTimeout = SleepTimeout.NeverSleep;
+		} else {
+			Screen.sleepTimeout = SleepTimeout.SystemSetting;
+		}
+	}
+
 	// Use this for initialization
 	void Start () {
 
@@ -129,20 +145,34 @@ public class UIManager : MonoBehaviour {
 			}
 		}
 	}
+
+
 	
 	// Update is called once per frame
 	void Update () {
-		IPDValueText.text = string.Format ("{0} mm", (int)(headTrackManager.IPD));
-		eyeInfoText.text = headTrackManager.eyeInfoText;
 
-		if (camManager.DeviceCamUsed) {
-			IPDSlider.SetActive (true);
-			IPDValueText.enabled = true;
-			IPDLabelText.enabled = true;
-		} else {
-			IPDSlider.SetActive (false);
-			IPDValueText.enabled = false;
-			IPDLabelText.enabled = false;
+		if (settingsVisible) {
+
+			IPDValueText.text = string.Format ("{0} mm", (int)(headTrackManager.IPD));
+			eyeInfoText.text = headTrackManager.eyeInfoText;
+
+			if (camManager.DeviceCamUsed) {
+				IPDSlider.SetActive (true);
+				IPDValueText.enabled = true;
+				IPDLabelText.enabled = true;
+			} else {
+				IPDSlider.SetActive (false);
+				IPDValueText.enabled = false;
+				IPDLabelText.enabled = false;
+			}
+
+			if (activeScene == 1) { // the void
+				theVoidBrightnessLabel.SetActive (true);
+				theVoidBrightnessSlider.SetActive (true);
+			} else {
+				theVoidBrightnessLabel.SetActive( false );
+				theVoidBrightnessSlider.SetActive (false);
+			}
 		}
 	}
 }

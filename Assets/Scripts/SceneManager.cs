@@ -7,6 +7,8 @@ using UnityEngine;
 public class SceneManager : MonoBehaviour {
 
 	List<GameObject> Scenes;
+	public Light headLight;
+	public Material TheVoidMaterial;
 
 	// Use this for initialization
 	void Awake () { // Awake is called before Start, so we know this has been done when UIManager calls us from its Start()
@@ -36,9 +38,29 @@ public class SceneManager : MonoBehaviour {
 			if (i == SceneNo) {
 				Scenes [i].SetActive (true);
 				RenderSettings.ambientLight = si.ambientLight;
+				headLight.gameObject.SetActive (si.headLight);
 			} else {
 				Scenes [i].SetActive (false);
 			}
+		}
+	}
+
+	// kinda hacky, just sets the brightness of one scene: "the void"
+	public void TheVoidSetBrightness( float value ) {
+		// 0.3 is default, means full ambient and no emit
+
+		if (value > 0.3f) {
+			RenderSettings.ambientLight = Color.white;
+			Scenes [1].GetComponent<SceneInfo> ().ambientLight = Color.white; // store in the scene
+			float b = (value - 0.3f) / 0.7f;
+			Color col = new Color (b, b, b, 1f);
+			TheVoidMaterial.SetColor ("_EmissionColor", col);
+		} else {
+			TheVoidMaterial.SetColor ("_EmissionColor", Color.black);
+			float b = value / 0.3f;
+			Color col = new Color (b, b, b, 1f);
+			RenderSettings.ambientLight = col;
+			Scenes [1].GetComponent<SceneInfo> ().ambientLight = col; // store in the scene
 		}
 	}
 
