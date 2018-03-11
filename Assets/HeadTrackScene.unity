@@ -1416,9 +1416,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fed44be8c606040488dc96c701172a20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneName: Box Scene
+  sceneName: Box Scene
   use: 1
   ambientLight: {r: 0.23137255, g: 0.23137255, b: 0.23137255, a: 1}
+  bgColor: {r: 0, g: 0, b: 0, a: 0}
   headLight: 0
 --- !u!4 &240167658
 Transform:
@@ -3105,7 +3106,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 639168103}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.05, y: 0.02, z: 0.5}
+  m_LocalPosition: {x: 0, y: -0.02, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1605677355}
@@ -3666,10 +3667,10 @@ MonoBehaviour:
   deviceCamera: {fileID: 10}
   eyeCamera: {fileID: 1738016221}
   lineRenderer: {fileID: 805898578}
-  left: 0.003846145
-  right: 0.032692302
-  bottom: -0.01965812
-  top: -0.006410257
+  left: -0.006837616
+  right: 0.02200854
+  bottom: -0.011111111
+  top: 0.0021367518
   near: 0.1
   far: 10
   camManager: {fileID: 805898575}
@@ -5248,9 +5249,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fed44be8c606040488dc96c701172a20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneName: The Void
+  sceneName: The Void
   use: 1
   ambientLight: {r: 0.83137256, g: 0.83137256, b: 0.83137256, a: 1}
+  bgColor: {r: 0, g: 0, b: 0, a: 0}
   headLight: 0
 --- !u!1 &1387699371
 GameObject:
@@ -6006,6 +6008,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   headLight: {fileID: 64303484}
   TheVoidMaterial: {fileID: 2100000, guid: f7ff19495e2c6461ca0c705a4a13cfb1, type: 2}
+  EyeCam: {fileID: 1738016221}
 --- !u!1 &1605677354
 GameObject:
   m_ObjectHideFlags: 0
@@ -6558,7 +6561,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1702564924}
   m_LocalRotation: {x: 0.098438114, y: -0.89607465, z: 0.24926154, w: 0.3538769}
-  m_LocalPosition: {x: -0.5947815, y: -0.55055016, z: 0.5245318}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2125139406}
@@ -6584,8 +6587,8 @@ Light:
     m_CustomResolution: -1
     m_Strength: 0.279
     m_Bias: 0
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
+    m_NormalBias: 0.34
+    m_NearPlane: 0.1
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
@@ -8196,9 +8199,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fed44be8c606040488dc96c701172a20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneName: Beeple
+  sceneName: Beeple
   use: 1
   ambientLight: {r: 0.23137255, g: 0.23137255, b: 0.23137255, a: 1}
+  bgColor: {r: 0, g: 0, b: 0, a: 0}
   headLight: 0
 --- !u!1 &2133876505
 GameObject:

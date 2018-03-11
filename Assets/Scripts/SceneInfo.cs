@@ -6,9 +6,10 @@ using UnityEngine;
 
 public class SceneInfo : MonoBehaviour {
 
-	public string SceneName;
+	public string sceneName;
 	public bool use;
 	public Color ambientLight;
+	public Color bgColor;
 	public bool headLight; // a light that moves with user's head, good for specular
 
 	// Use this for initialization

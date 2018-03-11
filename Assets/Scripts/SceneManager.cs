@@ -9,6 +9,7 @@ public class SceneManager : MonoBehaviour {
 	List<GameObject> Scenes;
 	public Light headLight;
 	public Material TheVoidMaterial;
+	public Camera EyeCam;
 
 	// Use this for initialization
 	void Awake () { // Awake is called before Start, so we know this has been done when UIManager calls us from its Start()
@@ -29,7 +30,7 @@ public class SceneManager : MonoBehaviour {
 	}
 
 	public string GetSceneName(int SceneNo) {
-		return Scenes [SceneNo].GetComponent<SceneInfo> ().SceneName;
+		return Scenes [SceneNo].GetComponent<SceneInfo> ().sceneName;
 	}
 
 	public void SetActiveScene(int SceneNo) {
@@ -39,6 +40,8 @@ public class SceneManager : MonoBehaviour {
 				Scenes [i].SetActive (true);
 				RenderSettings.ambientLight = si.ambientLight;
 				headLight.gameObject.SetActive (si.headLight);
+				EyeCam.backgroundColor = si.bgColor;
+
 			} else {
 				Scenes [i].SetActive (false);
 			}
