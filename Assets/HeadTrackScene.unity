@@ -1681,7 +1681,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &240167657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2539,7 +2539,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &423039788
 Transform:
   m_ObjectHideFlags: 0
@@ -3570,7 +3570,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 639168103}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.03, y: -0.08, z: 0.5}
+  m_LocalPosition: {x: 0, y: -0.06, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1605677355}
@@ -4132,10 +4132,10 @@ MonoBehaviour:
   deviceCamera: {fileID: 10}
   eyeCamera: {fileID: 1738016221}
   lineRenderer: {fileID: 805898578}
-  left: -0.0013247873
-  right: 0.0015598284
-  bottom: 0.00017094013
-  top: 0.0014957264
+  left: -0.0006837616
+  right: 0.002200854
+  bottom: -0.0002564103
+  top: 0.001068376
   near: 0.01
   far: 10
   camManager: {fileID: 805898575}
