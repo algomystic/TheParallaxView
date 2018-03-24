@@ -12,6 +12,7 @@ public class SelectEye : MonoBehaviour {
 	public CameraManager camManager;
 	public Transform leftEye;
 	public Transform rightEye;
+	public Transform thirdEye;
 
 	// Use this for initialization
 	void Start () {
@@ -23,7 +24,10 @@ public class SelectEye : MonoBehaviour {
 
 		Vector3 pos = transform.localPosition;
 		float IPD = headTrackManager.IPD;
+		float EyeHeight = headTrackManager.EyeHeight;
+
 		float dist = IPD * 0.001f * 0.5f; //in metres and half
+		float height = EyeHeight * 0.001f;
 
 		if (headTrackManager.openEye == HeadTrackManager.OpenEye.Right) { // move camera to open eye
 			if (!camManager.DeviceCamUsed)
@@ -37,6 +41,10 @@ public class SelectEye : MonoBehaviour {
 				pos.x = -dist; 
 		}
 		transform.localPosition = pos;
+
+		pos = thirdEye.transform.localPosition;
+		pos.y = height;
+		thirdEye.transform.localPosition = pos;
 
 		// update eye positions, only for visualization purpose
 

@@ -11,15 +11,12 @@ public class UIManager : MonoBehaviour {
 	bool settingsVisible = false;
 	public SceneManager sceneManager;
 
-	// scenes
-	//public GameObject BoxScene;
-	//public GameObject TheVoidScene;
-	//public GameObject BeepleScene;
-
+	public GameObject deviceSettingsPanel;
+	public Slider IPDSlider;
 	public Text eyeInfoText;
 	public Text IPDValueText;
-	public GameObject IPDSlider;
-	public Text IPDLabelText;
+	/*	public Text IPDLabelText;
+	public GameObject HighIPDRangeToggle;*/
 
 	public HeadTrackManager headTrackManager;
 	public CameraManager camManager;
@@ -38,6 +35,9 @@ public class UIManager : MonoBehaviour {
 	public GameObject theVoidBrightnessSlider;
 	public GameObject theVoidBrightnessLabel; 
 
+	public GameObject ErrorPanel;
+	public Text ErrorText;
+
 	public void ToggleSettingsVisible () {
 		
 		settingsVisible = !settingsVisible;
@@ -46,6 +46,17 @@ public class UIManager : MonoBehaviour {
 			SettingsPanel.SetActive (true);
 		else
 			SettingsPanel.SetActive (false);
+	}
+
+	public void HighIPDRangeToggleFunction (bool active) {
+
+		if (active) {
+			IPDSlider.maxValue = 200f;
+			IPDSlider.minValue = 0f;
+		} else {
+			IPDSlider.maxValue = 80f;
+			IPDSlider.minValue = 50f;
+		}
 	}
 
 	public void ReadArticle () {
@@ -147,9 +158,20 @@ public class UIManager : MonoBehaviour {
 	}
 
 
-	
 	// Update is called once per frame
 	void Update () {
+
+		if (headTrackManager.ARError != null) {
+			ErrorPanel.SetActive (true);
+			ErrorText.text = "AR Session Error: " + headTrackManager.ARError;
+
+			if (headTrackManager.ARError.StartsWith ("Camera access")) {
+				ErrorText.text += "\n\nGo into the phone's Settings. Scroll down to TheParallaxView and enable camera access.";
+			}
+
+		} else {
+			ErrorPanel.SetActive (false);
+		}
 
 		if (settingsVisible) {
 
@@ -157,13 +179,17 @@ public class UIManager : MonoBehaviour {
 			eyeInfoText.text = headTrackManager.eyeInfoText;
 
 			if (camManager.DeviceCamUsed) {
-				IPDSlider.SetActive (true);
+				deviceSettingsPanel.SetActive (true);
+				/*IPDSlider.gameObject.SetActive (true);
 				IPDValueText.enabled = true;
 				IPDLabelText.enabled = true;
+				HighIPDRangeToggle.SetActive (true);*/
 			} else {
-				IPDSlider.SetActive (false);
+				deviceSettingsPanel.SetActive (false);
+				/*IPDSlider.gameObject.SetActive (false);
 				IPDValueText.enabled = false;
 				IPDLabelText.enabled = false;
+				HighIPDRangeToggle.SetActive (false);*/
 			}
 
 			if (activeScene == 1) { // the void

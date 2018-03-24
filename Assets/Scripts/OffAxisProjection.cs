@@ -17,6 +17,7 @@ public class OffAxisProjection : MonoBehaviour
 
 	public CameraManager camManager;
 
+	public float nearDist;
 
 	void LateUpdate()
 	{
@@ -84,8 +85,10 @@ public class OffAxisProjection : MonoBehaviour
 			} 
 		}
 
-		// move near to 0.1 (10 cm from eye)
-		float scale_factor = 0.1f / near;
+		nearDist = near;
+
+		// move near to 0.01 (1 cm from eye)
+		float scale_factor = 0.01f / near;
 		near *= scale_factor;
 		left *= scale_factor;
 		right *= scale_factor;
