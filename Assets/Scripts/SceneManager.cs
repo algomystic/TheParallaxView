@@ -10,6 +10,7 @@ public class SceneManager : MonoBehaviour {
 	public Light headLight;
 	public Material TheVoidMaterial;
 	public Camera EyeCam;
+	public PostBlur pblur;
 
 	// Use this for initialization
 	void Awake () { // Awake is called before Start, so we know this has been done when UIManager calls us from its Start()
@@ -41,6 +42,14 @@ public class SceneManager : MonoBehaviour {
 				RenderSettings.ambientLight = si.ambientLight;
 				headLight.gameObject.SetActive (si.headLight);
 				EyeCam.backgroundColor = si.bgColor;
+
+				if (SceneNo == 3) { // hack! this should be part of scene info
+					pblur.enabled = true;
+					pblur.Activate();
+				} else {
+					pblur.DeActivate ();
+					pblur.enabled = false;
+				}
 
 			} else {
 				Scenes [i].SetActive (false);

@@ -27,15 +27,30 @@ public class HeadTrackManager : MonoBehaviour {
 
 	public string eyeInfoText; // little status, which eye is being tracked, auto or not
 	public float IPD = 64f; // inter pupil distance (mm)
+	public float EyeHeight = 32f; // eye height from head anchor (mm)
+
+	public string ARError;
 
 	public void SetIPD( float value ) {
 		IPD = value;
 	}
 		
+	public void SetEyeHeight( float value ) {
+		EyeHeight = value;
+	}
+
 
 	// Use this for initialization
-	void Start () {
+	public void Start () {
+
+		// first try to get camera acess
+		//yield return RequestCamera ();
+
+		ARError = null;
+
 		m_session = UnityARSessionNativeInterface.GetARSessionNativeInterface();
+
+		UnityARSessionNativeInterface.ARSessionFailedEvent += CatchARSessionFailed;
 
 		Application.targetFrameRate = 60;
 		ARKitFaceTrackingConfiguration config = new ARKitFaceTrackingConfiguration();
@@ -58,6 +73,26 @@ public class HeadTrackManager : MonoBehaviour {
 		}
 
 	}
+
+	void CatchARSessionFailed (string error) {
+		//Debug.Log ("AR session failed. Error: " + error);
+		ARError = error;
+	}
+
+
+	/* // this doesn't help at all
+	IEnumerator RequestCamera() {
+		yield return Application.RequestUserAuthorization(UserAuthorization.WebCam);
+		if (Application.HasUserAuthorization(UserAuthorization.WebCam)) {
+			Debug.Log ("Camera granted");
+		} else {
+			Debug.Log ("Camera denied");
+		}
+	}
+*/
+
+
+
 
 	void FaceAdded (ARFaceAnchor anchorData)
 	{

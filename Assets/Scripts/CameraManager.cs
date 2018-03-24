@@ -30,7 +30,7 @@ public class CameraManager : MonoBehaviour {
 
 
 	public void SetWorldCam() {
-		WorldCam.enabled = true;
+		WorldCam.gameObject.SetActive(true);
 		EyeCam.enabled = false;
 		DeviceCam.enabled = false;
 		EyeCamUsed = false;
@@ -40,7 +40,7 @@ public class CameraManager : MonoBehaviour {
 	}
 
 	public void SeEyeCam() {
-		WorldCam.enabled = false;
+		WorldCam.gameObject.SetActive(false);
 		EyeCam.enabled = true;
 		DeviceCam.enabled = false;
 		EyeCamUsed = true;
@@ -50,7 +50,7 @@ public class CameraManager : MonoBehaviour {
 	}
 
 	public void SetTrackedCam() {
-		WorldCam.enabled = false;
+		WorldCam.gameObject.SetActive(false);
 		EyeCam.enabled = false;
 		DeviceCam.enabled = true;
 		EyeCamUsed = false;
