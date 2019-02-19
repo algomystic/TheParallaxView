@@ -86,4 +86,4 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Screen2Tex: {r: 0.00041050903, g: 0.0008888889, b: 0, a: 0}
+    - _Screen2Tex: {r: 0.00052083336, g: 0.0009259259, b: 0, a: 0}
