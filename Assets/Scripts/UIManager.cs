@@ -133,8 +133,12 @@ public class UIManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		bool deviceIsIphoneX = UnityEngine.iOS.Device.generation == UnityEngine.iOS.DeviceGeneration.iPhoneX;
-		if (!deviceIsIphoneX) {
+        bool deviceIsIphoneX = (UnityEngine.iOS.Device.generation == UnityEngine.iOS.DeviceGeneration.iPhoneX  ||
+                                UnityEngine.iOS.Device.generation == UnityEngine.iOS.DeviceGeneration.iPhoneXS ||
+                                UnityEngine.iOS.Device.generation == UnityEngine.iOS.DeviceGeneration.iPhoneXR   ); 
+
+
+        if (!deviceIsIphoneX) {
 			RequireIPhoneXPanel.SetActive (true);
 		}
 
