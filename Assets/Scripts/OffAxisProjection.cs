@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 // this script is for setting up the non-symmetric camera frustom and compute the off-axis projection matrix used for the eye camera
 
@@ -32,21 +33,22 @@ public class OffAxisProjection : MonoBehaviour
 		Vector3 close = device_plane.ClosestPointOnPlane (Vector3.zero);
 		near = close.magnitude;
 
-		// couldn't get device orientation to work properly in all cases, so just landscape for now (it's just the UI that is locked to landscape, everyting else works just fine)
-		/*if (Screen.orientation == ScreenOrientation.Portrait) { 
+        // couldn't get device orientation to work properly in all cases, so just landscape for now (it's just the UI that is locked to landscape, everyting else works just fine)
+        /*if (Screen.orientation == ScreenOrientation.Portrait) { 
 			left = trackedCamPos.x - 0.040f; // portrait iphone X
 			right = trackedCamPos.x + 0.022f;
 			top = trackedCamPos.y + 0.000f;
 			bottom = trackedCamPos.y - 0.135f;
 		} else {*/
 
-		// landscape iPhone X, measures in meters
-		left = deviceCamPos.x - 0.000f;
+        // landscape iPhone X, measures in meters
+
+        left = deviceCamPos.x - 0.000f;
 		right = deviceCamPos.x + 0.135f;
 		top = deviceCamPos.y + 0.022f;
 		bottom = deviceCamPos.y - 0.040f;
 
-		far = 10f; // may need bigger for bigger scenes, max 10 metres for now
+        far = 10f; // may need bigger for bigger scenes, max 10 metres for now
 
 		Vector3 topLeft = new Vector3 (left, top, near);
 		Vector3 topRight = new Vector3 (right, top, near);

@@ -30,8 +30,9 @@ public class HeadTrackManager : MonoBehaviour {
 	public float EyeHeight = 32f; // eye height from head anchor (mm)
 
 	public string ARError;
+    public GameObject RequireIPhoneXPanel;
 
-	public void SetIPD( float value ) {
+    public void SetIPD( float value ) {
 		IPD = value;
 	}
 		
@@ -70,7 +71,8 @@ public class HeadTrackManager : MonoBehaviour {
 			//UnityARSessionNativeInterface.ARFrameUpdatedEvent += FrameUpdate; //can't get the light direction estimate to work for some reason, it freezes the app
 		} else {
 			Debug.Log ("ARKitFaceTrackingConfiguration not supported");
-		}
+            RequireIPhoneXPanel.SetActive(true);
+        }
 
 	}
 
