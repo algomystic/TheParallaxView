@@ -60,9 +60,9 @@ public class UIManager : MonoBehaviour {
 	}
 
 	public void ReadArticle () {
-		Application.OpenURL("http://anxious-bored.com/TPV");
-
-	}
+		//Application.OpenURL("http://anxious-bored.com/TPV");
+        Application.OpenURL("https://www.anxious-bored.com/blog/2018/2/25/theparallaxview-illusion-of-depth-by-3d-head-tracking-on-iphone-x"); // use secure link
+    }
 
 	// ugly but I don't wanna figure out how to dynamically create UI buttons right now TODO
 	public void SetScene0 () {
