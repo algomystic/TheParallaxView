@@ -28,8 +28,9 @@ public class UIManager : MonoBehaviour {
 	public Button Scene0; // box scene
 	public Button Scene1; // void
 	public Button Scene2; // beeple
-	public Button Scene3;
-	public Button Scene4;
+	public Button Scene3; // hand
+	public Button Scene4; // vibranium
+    public Button Scene5; // HoloCubes
 
 	int activeScene;
 	public GameObject theVoidBrightnessSlider;
@@ -90,7 +91,12 @@ public class UIManager : MonoBehaviour {
 		activeScene = 4;
 	}
 
-	/*
+    public void SetScene5()
+    {
+        sceneManager.SetActiveScene(5);
+        activeScene = 5;
+    }
+    /*
 	public void SetBoxScene() {
 		BoxScene.SetActive (true);
 		TheVoidScene.SetActive (false);
@@ -113,7 +119,7 @@ public class UIManager : MonoBehaviour {
 	}*/
 
 
-	public void TryAnyway() {
+    public void TryAnyway() {
 		RequireIPhoneXPanel.SetActive (false);
 	}
 
@@ -144,16 +150,17 @@ public class UIManager : MonoBehaviour {
 		}*/
 
 		// ugly but I don't wanna figure out how to dynamically create UI buttons right now TODO
-		Button[] SceneButtons = new Button[5];
+		Button[] SceneButtons = new Button[6];
 		SceneButtons [0] = Scene0;
 		SceneButtons [1] = Scene1;
 		SceneButtons [2] = Scene2;
 		SceneButtons [3] = Scene3;
 		SceneButtons [4] = Scene4;
+        SceneButtons [5] = Scene5;
 
-		// setup scene buttons
-		int NoScenes = sceneManager.GetNoScenes();
-		for (int i = 0; i < 5; i++) {
+        // setup scene buttons
+        int NoScenes = sceneManager.GetNoScenes();
+		for (int i = 0; i < 6; i++) {
 			if (i < NoScenes) {
 				SceneButtons [i].GetComponentInChildren<Text> ().text = sceneManager.GetSceneName (i);
 			} else {
